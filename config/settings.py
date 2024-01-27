@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # third app
+    "debug_toolbar",
     'allauth',
     'allauth.account',
     'crispy_forms',
@@ -60,6 +61,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    #debug toolbar
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
 
      # Add the account middleware:
     "allauth.account.middleware.AccountMiddleware",
@@ -86,6 +90,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                
+                'store.context_processors.show_category',
             ],
         },
     },

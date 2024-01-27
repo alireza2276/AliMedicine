@@ -1,1 +1,34 @@
-Hello
+{% extends "_base.html" %}
+
+{% load static %}
+{% load i18n %}
+
+{% block title %}{% trans "Home" %}{% endblock title %}
+
+{% block content %}
+
+		<!-- Start Heading Section -->
+		<div class="site-blocks-cover" style="background-image: url('{% static 'images/hero_1.jpg' %}');">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-7 mx-auto order-lg-2 align-self-center">
+						<div class="site-block-cover-content text-center">
+							<h2 class="sub-title">دارو های جدیده همه روزه</h2>
+							<h1>به قالب حرفه ای پزشکی خوش آمدید</h1>
+							<p>
+								<a href="#" class="btn btn-primary py-3">مشاهده محصولات</a>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End Heading Section -->
+
+<h3>hello</h3>
+
+{% endblock content %}
+
+
+
+
