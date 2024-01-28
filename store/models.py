@@ -1,5 +1,7 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from django.urls import reverse
+from tinymce.models import HTMLField
 
 
 class Category(models.Model):
@@ -21,8 +23,8 @@ class Product(models.Model):
     image = models.ImageField(upload_to='static/product-image', verbose_name=_('image'))
     inventory = models.IntegerField()
     expire = models.CharField(_('expire'), max_length=255, blank=True, null=True)
-    description = models.TextField(_('description'))
-    short_description = models.TextField(_('short_description'), null=True, blank=True)
+    description = HTMLField(_('description'))
+    short_description = HTMLField(_('short_description'), null=True, blank=True)
     country_created = models.CharField(_('country_created'), max_length=255, null=True, blank=True)
     volume = models.CharField(_('volume'), max_length=255, blank=True, null=True)
     gender = models.CharField(_('gender'), max_length=255, null=True, blank=True)
@@ -34,6 +36,10 @@ class Product(models.Model):
 
     datetime_created = models.DateTimeField(auto_now_add=True)
     datetime_modeified = models.DateTimeField(auto_now=True)
+
+    def get_absolute_url(self):
+        return reverse("product_detail", args=[self.pk])
+    
 
 
     def __str__(self) -> str:

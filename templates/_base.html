@@ -52,10 +52,10 @@
               <nav class="site-navigation text-right text-md-center" role="navigation">
                 <ul class="site-menu js-clone-nav d-none d-lg-block">
                   <li class="active">
-                    <a href="index.html">صفحه نخست</a>
+                    <a href="{% url "home" %}">صفحه نخست</a>
                   </li>
                   <li>
-                    <a href="shop.html">محصولات</a>
+                    <a href="{% url "product_list" %}">محصولات</a>
                   </li>
                   <li class="has-children">
                     <a href="#">منوی کشویی</a>
@@ -64,7 +64,7 @@
                       {% for cat in category %}
                         {% if not cat.parent %}
                           <li>
-                            <a href="#">{{ sub.title }}</a>
+                            <a href="{% url 'category' cat.id %}">{{ sub.title }}</a>
                           </li>
                           {% if cat.subs.all %}
                             <li class="has-children">
@@ -73,7 +73,7 @@
                                 {% for cat in cat.subs.all %}
                                   <li>
                                     <li class="has-children">
-                                      <a href="#">{{ cat.title }}</a>
+                                      <a href="{% url 'category' cat.id %}">{{ cat.title }}</a>
                                       <ul class="dropdown">
                                         {% for cat in cat.subs.all %}
                                           <li>
