@@ -68,7 +68,7 @@
                           </li>
                           {% if cat.subs.all %}
                             <li class="has-children">
-                              <a href="#">{{ cat.title }}</a>
+                              <a href="{% url "category" cat.id %}">{{ cat.title }}</a>
                               <ul class="dropdown">
                                 {% for cat in cat.subs.all %}
                                   <li>
@@ -77,21 +77,19 @@
                                       <ul class="dropdown">
                                         {% for cat in cat.subs.all %}
                                           <li>
-                                            <a href="{% url "category" cat.id %}">{{ cat.title }}</a>
-                                            
+                                            <a href="{% url 'category' cat.id %}">{{ cat.title }}</a>
                                             
                                           </li>
                                         {% endfor %}
                                       </ul>
                                     </li>
-                                    
                                   </li>
                                 {% endfor %}
                               </ul>
                             </li>
                           {% else %}
                             <li>
-                              <a href="#">{{ cat.title }}</a>
+                              <a href="{% url 'category' cat.id %}">{{ cat.title }}</a>
                             </li>
                           {% endif %}
                         {% endif %}

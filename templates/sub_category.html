@@ -1,0 +1,7 @@
+<ul class="dropdown">
+  {% for cat in cat.subs.all %}
+    <li>
+      <a href="{% url 'category' cat.id %}">{{ cat.title }}</a>
+    </li>
+  {% endfor %}
+</ul>
