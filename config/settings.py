@@ -52,6 +52,8 @@ INSTALLED_APPS = [
     #local app
     'accounts',
     'store',
+    'cart',
+    'orders',
 ]
 
 MIDDLEWARE = [
@@ -91,6 +93,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'store.context_processors.cart',
                 
                 'store.context_processors.show_category',
             ],

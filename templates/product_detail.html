@@ -39,22 +39,18 @@
             <p class="price">{{ product.price }}هزار تومان</p>
           {% endif %}
 
-          <h6>{% trans "expire" %}:<strong>{{product.expire}}</strong></h6>
-          <h6>{% trans "inventory" %}:<strong>{{product.inventory}}</strong></h6>
+          <h6>{% trans 'expire' %}:<strong>{{ product.expire }}</strong></h6>
+          <h6>{% trans 'inventory' %}:<strong>{{ product.inventory }}</strong></h6>
           <div class="mb-5">
-            <div class="input-group mb-3" style="max-width: 220px;">
-              <div class="input-group-prepend">
-                <button class="btn btn-outline-primary js-btn-minus" type="button">&minus;</button>
+            <form action="{% url 'cart_add' product.id %}" method="post">
+              {% csrf_token %}
+              <div class="quantity">
+                <input type="number" class="quantity-input" name="quantity" id="qty" value="1" min="1" max="31" />
               </div>
-              <input type="text" class="form-control text-center" value="1" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1" />
-              <div class="input-group-append">
-                <button class="btn btn-outline-primary js-btn-plus" type="button">&plus;</button>
-              </div>
-            </div>
+              <button type="submit" class="buy-now btn btn-sm height-auto py-3 btn-primary">{% trans 'Add to cart' %}</button>
+            </form>
           </div>
-          <p>
-            <a href="cart.html" class="buy-now btn btn-sm height-auto py-3 btn-primary">افزودن به سبد خرید</a>
-          </p>
+
           <div class="mt-5">
             <ul class="nav nav-pills mb-3 custom-pill" id="pills-tab" role="tablist">
               <li class="nav-item">

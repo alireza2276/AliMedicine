@@ -1,0 +1,139 @@
+{% extends '_base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}
+  {% trans 'cart' %}
+{% endblock %}
+
+{% block content %}
+  <!-- Start Breadcrumb Section -->
+  <div class="bg-light py-3">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 mb-0">
+          <a href="index.html">صفحه نخست</a> <span class="mx-2 mb-0">/</span>
+          <strong class="text-black">سبد خرید</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Start Breadcrumb Section -->
+
+  <!-- Start Cart Section -->
+  <div class="site-section">
+    <div class="container">
+      <div class="row mb-5">
+        <form class="col-md-12" method="post">
+          <div class="site-blocks-table">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th class="product-thumbnail">
+                    {% trans 'image' %}
+                  </th>
+                  <th class="product-name">
+                    {% trans 'product' %}
+                  </th>
+                  <th class="product-price">
+                    {% trans 'price' %}
+                  </th>
+                  <th class="product-quantity">
+                    {% trans 'quantity' %}
+                  </th>
+                  <th class="product-total">
+                    {% trans 'total_price' %}
+                  </th>
+                  <th class="product-remove">
+                    {% trans 'remove' %}
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for item in cart %}
+                  <tr>
+                    <td class="product-thumbnail">
+                      <img src="{{ item.product_obj.image.url }}" alt="Image" class="img-fluid" />
+                    </td>
+                    <td class="product-name">
+                      <h2 class="h5 text-black">{{ item.product_obj.title }}</h2>
+                    </td>
+                    {% if item.product_obj.discount %}
+                      <td>{{ item.product_obj.discount }} هزار تومان</td>
+                    {% else %}
+                      <td>{{ item.product_obj.price }} هزار تومان</td>
+                    {% endif %}
+                    <td>
+                      <form class="d-flex" action="{% url 'cart_add' item.product_obj.id %}" method="POST">
+                        {% csrf_token %}
+                        <div class="quantity">
+                          <input type="number" class="quantity-input" name="quantity" id="qty-1" value="{{ item.quantity }}" min="1" />
+                        </div>
+                        {{ item.product_update_quantity_form.inplace }}
+                        <button class="small" type="submit"><i>refresh</i></button>
+                      </form>
+                    </td>
+                    <td>{{ item.total_price }} هزار تومان</td>
+                    <td>
+                      <a href="{% url 'cart_remove' item.product_obj.id %}" class="btn btn-primary height-auto btn-sm">X</a>
+                    </td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </form>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="row mb-5">
+            <div class="col-md-6 mb-3 mb-md-0">
+              <button class="btn btn-primary btn-md btn-block">بروزرسانی سبد خرید</button>
+            </div>
+            <div class="col-md-6">
+              <button class="btn btn-outline-primary btn-md btn-block">ادامه خرید</button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <label class="text-black h4" for="coupon">تخفیف</label>
+              <p>لطفا کد تخفیف خود را وارد نمایید.</p>
+            </div>
+            <div class="col-md-8 mb-3 mb-md-0">
+              <input type="text" class="form-control py-3" id="coupon" placeholder="کد تخفیف" />
+            </div>
+            <div class="col-md-4">
+              <button class="btn btn-primary btn-md">اعمال تخفیف</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 pl-5">
+          <div class="row justify-content-end">
+            <div class="col-md-7">
+              <div class="row">
+                <div class="col-md-12 text-right border-bottom mb-5">
+                  <h3 class="text-black h4 text-uppercase">جمع فاکتور</h3>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-md-6">
+                  <span class="text-black">جمع مبلغ:</span>
+                </div>
+                <div class="col-md-6 text-right">
+                  <strong class="text-black">230 هزار تومان</strong>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <button class="btn btn-primary btn-lg btn-block" onclick="window.location='checkout.html'">پرداخت و تکمیل خرید</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Cart Section -->
+{% endblock %}
