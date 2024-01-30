@@ -1,6 +1,9 @@
 from store.models import Product
 from django.contrib import messages
 from django.utils.translation import gettext_lazy as _
+from coupons.forms import CouponApplyForm
+from coupons.models import Coupon
+from decimal import Decimal
 
 
 
@@ -19,6 +22,7 @@ class Cart:
         if not cart:
             cart = self.session['cart'] = {}
         self.cart = cart
+        self.coupon_id = self.session.get('coupon_id')
     
     def add(self, product, quantity=1, replace_current_quantity=False):
         """
@@ -89,7 +93,36 @@ class Cart:
         self.save()
 
     def get_total_price(self):
-        return sum(item['quantity'] * item['product_obj'].price for item in self.cart.values())
+
+        return sum((item['total_price'] for item in self.cart.values()))
+    
+
+
+    @property
+    def coupon(self):
+        if self.coupon_id:
+            return Coupon.objects.get(id=self.coupon_id)
+        return None
+    
+    def get_discount(self):
+        if self.coupon:
+            return round((self.coupon.discount / Decimal('100')) * self.get_total_price(), 0)
+        
+    def get_total_price_after_discount(self):
+        return self.get_total_price() - self.get_discount()
+       
+    
+        
+
+            
+
+            
+        
+
+        
+        
+
+            
     
 
 

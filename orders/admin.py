@@ -17,7 +17,7 @@ class OrderItemTabularInline(admin.TabularInline):
 
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ['customer','datetime_created', 'is_paid', 'num_of_items']
+    list_display = ['user','datetime_created', 'is_paid', 'num_of_items']
     inlines = [OrderItemTabularInline]
 
     def get_queryset(self, request: HttpRequest) -> QuerySet[Any]:

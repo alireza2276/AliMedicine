@@ -88,11 +88,8 @@
       <div class="row">
         <div class="col-md-6">
           <div class="row mb-5">
-            <div class="col-md-6 mb-3 mb-md-0">
-              <button class="btn btn-primary btn-md btn-block">بروزرسانی سبد خرید</button>
-            </div>
             <div class="col-md-6">
-              <button class="btn btn-outline-primary btn-md btn-block">ادامه خرید</button>
+              <a href="{% url 'order_create' %}" class="btn btn-outline-primary btn-md btn-block">ادامه خرید</a>
             </div>
           </div>
           <div class="row">
@@ -100,12 +97,17 @@
               <label class="text-black h4" for="coupon">تخفیف</label>
               <p>لطفا کد تخفیف خود را وارد نمایید.</p>
             </div>
-            <div class="col-md-8 mb-3 mb-md-0">
-              <input type="text" class="form-control py-3" id="coupon" placeholder="کد تخفیف" />
-            </div>
-            <div class="col-md-4">
-              <button class="btn btn-primary btn-md">اعمال تخفیف</button>
-            </div>
+            <form action="{% url "apply" %}" method="post">
+              {% csrf_token %}
+              <div class="col-md-8 mb-3 mb-md-0">
+                <input name="code" type="text" class="form-control py-3" id="coupon" placeholder="کد تخفیف" />
+              </div>
+              <br>
+              <div class="col-md-4">
+                <input type="submit" class="btn btn-primary btn-md" value="اعمال تخفیف"/>
+              </div>
+            </form>
+            
           </div>
         </div>
         <div class="col-md-6 pl-5">
@@ -116,14 +118,34 @@
                   <h3 class="text-black h4 text-uppercase">جمع فاکتور</h3>
                 </div>
               </div>
-              <div class="row mb-3">
-                <div class="col-md-6">
-                  <span class="text-black">جمع مبلغ:</span>
+              {% if cart.coupon %}
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <span class="text-black">جمع مبلغ:</span>
+                  </div>
+                  <div class="col-md-6 text-right">
+                    <strong class="text-black">{{ cart.get_total_price }} هزار تومان</strong>
+                  </div>
                 </div>
-                <div class="col-md-6 text-right">
-                  <strong class="text-black">230 هزار تومان</strong>
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <span class="text-black">جمع مبلغ با کد تخفیف</span>
+                  </div>
+                  <div class="col-md-6 text-right">
+                    <strong class="text-black">{{ cart.get_total_price_after_discount }} هزار تومان</strong>
+                  </div>
                 </div>
-              </div>
+              {% else %}
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <span class="text-black">جمع مبلغ:</span>
+                  </div>
+                  <div class="col-md-6 text-right">
+                    <strong class="text-black">{{ cart.get_total_price }} هزار تومان</strong>
+                  </div>
+                </div>
+              {% endif %}
+
               <div class="row">
                 <div class="col-md-12">
                   <button class="btn btn-primary btn-lg btn-block" onclick="window.location='checkout.html'">پرداخت و تکمیل خرید</button>

@@ -4,7 +4,7 @@ from .cart import Cart
 from .forms import AddToCartForm
 from django.contrib import messages
 from django.utils.translation import gettext_lazy as _
-
+from coupons.forms import CouponApplyForm
 
 
 
@@ -17,8 +17,11 @@ def cart_detail_view(request):
             'inplace': True,
         })
 
+    coupon_apply_form = CouponApplyForm()
+
     return render(request, 'cart_detail.html', context={
-        'cart': cart
+        'cart': cart,
+        'coupon_apply_form': coupon_apply_form
     })
 
 def add_to_cart_view(request, product_id):

@@ -35,6 +35,9 @@ def order_create(request):
             
             cart.clear()
 
+            messages.success(request, _('Your orders has successfully placed.'))
+
+
             request.user.first_name = order_obj.first_name
             request.user.last_name = order_obj.last_name
             request.user.save()

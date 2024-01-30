@@ -6,7 +6,7 @@ from django.urls import reverse
 
 
 class Order(models.Model):
-        customer = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='orders', verbose_name=_('customer') )
+        user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='orders', verbose_name=_('customer') )
         is_paid = models.BooleanField(_('is_paid'), default=False)
 
         first_name = models.CharField(_('first_name'), max_length=255)
@@ -25,7 +25,7 @@ class Order(models.Model):
         datetime_modified = models.DateTimeField(auto_now=True)
 
         def __str__(self):
-            return f"{self.customer} - {self.is_paid}"
+            return f"{self.user} - {self.is_paid}"
         
         class Meta:
             verbose_name_plural = _('orders')
