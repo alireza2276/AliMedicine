@@ -41,6 +41,12 @@ class Product(models.Model):
         return reverse("product_detail", args=[self.pk])
     
 
+    @property
+
+    def price_percentage(self):
+        return round(100 * (self.price - self.discount) / self.price)
+    
+
 
     def __str__(self) -> str:
         return f"{self.title}"

@@ -23,20 +23,31 @@
   <div class="site-section">
     <div class="container">
       <div class="row">
-        <div class="col-lg-6">
-          <h3 class="mb-3 h6 text-uppercase text-black d-block">فیلتر بر اساس قیمت</h3>
-          <div id="slider-range" class="border-primary"></div>
-          <input type="text" name="text" id="amount" class="form-control border-0 pl-0 bg-white" disabled="" />
-        </div>
-        <div class="col-lg-3">
-          <h3 class="mb-3 h6 text-uppercase text-black d-block">فیلتر بر اساس شرکت سازنده</h3>
-          <button type="button" class="btn btn-secondary btn-md dropdown-toggle" id="dropdownMenuReference" data-toggle="dropdown">شرکت سازنده</button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuReference">
-            <a class="dropdown-item" href="#">شرکت اول</a>
-            <a class="dropdown-item" href="#">شرکت دوم</a>
-            <a class="dropdown-item" href="#">شرکت سوم</a>
+        <form>
+          <div class="col-lg-6">
+            <h3 class="mb-3 h6 text-uppercase text-black d-block">{% trans "filter by price" %}:</h3>
+            <label for="price">{% trans "Min" %}:<input checked name="min_price" type="number" id="price"></label>
+            
+            <label for="price">{% trans "Max" %}:<input checked name="max_price" type="number" id="price"></label>
+            
           </div>
-        </div>
+          <br>
+          <div class="col-lg-3">
+            <h3 class="mb-3 h6 text-uppercase text-black d-block">{% trans "filter by category" %}:
+              <div class="select-option">
+                <select name="categories" id="room">
+                  {% for category in categories_obj  %}
+                    <option {% if category.title in categories %}selected{% endif %} value="{{category.title}}">{{category.title}}</option>
+                  {% endfor %}
+                  
+                </select>
+              </div>
+            </h3>
+            
+          </div>
+          <br>
+          <button class="btn btn-primary" type="submit">{% trans "Filter" %}</button>
+        </form>
       </div>
 
       <div class="row">
