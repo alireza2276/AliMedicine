@@ -1,5 +1,5 @@
 from typing import Any
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView
 from .models import Product, Category
 
@@ -41,4 +41,14 @@ class ProductDetailView(DetailView):
     model = Product
     template_name = 'product_detail.html'
     context_object_name = 'product'
+
+
+    def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
+        context = super().get_context_data(**kwargs)
+
+        product = get_object_or_404(Product.objects.select_related('category'), id=self.kwargs['pk'])
+        related_products = Product.objects.filter(category=product.category).exclude(id=self.kwargs['pk'])[:3]
+        context['related_products'] = related_products
+
+        return context
 

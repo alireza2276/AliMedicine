@@ -47,7 +47,7 @@
               <div class="quantity">
                 <input type="number" class="quantity-input" name="quantity" id="qty" value="1" min="1" max="31" />
               </div>
-              <br>
+              <br />
               <button type="submit" class="buy-now btn btn-sm height-auto py-3 btn-primary">{% trans 'Add to cart' %}</button>
             </form>
           </div>
@@ -124,4 +124,31 @@
     </div>
   </div>
   <!-- End Product Content Section -->
+
+  <!-- Start Popular Products Section -->
+  <div class="site-section">
+    <div class="container">
+      <div class="row">
+        <div class="title-section text-center col-12">
+          <h2 class="text-uppercase">{% trans "related products" %}</h2>
+        </div>
+      </div>
+      <div class="row">
+        {% for product in related_products %}
+          <div class="col-sm-6 col-lg-4 text-center item mb-4">
+            <a href="shop-single.html"><img style="height: 200px; width: 200px;" src="{{product.image.url}}" alt="Image" /></a>
+            <h3 class="text-dark"><a href="shop-single.html">{{product.title}}</a></h3>
+            {% if product.discount %}
+              <p class="price">
+                <del>{{ product.price }}{% trans "$" %}</del>&mdash; {{ product.discount }}{% trans "$" %}
+              </p>
+            {% else %}
+              <p class="price">{{ product.price }}{% trans "$" %}</p>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  <!-- End Popular Products Section -->
 {% endblock %}
