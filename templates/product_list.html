@@ -7,17 +7,7 @@
 {% endblock %}
 
 {% block content %}
-  <!-- Start Breadcrumb Section -->
-  <div class="bg-light py-3">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12 mb-0">
-          <a href="index.html">صفحه نخست</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">محصولات</strong>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- End Breadcrumb Section -->
+
 
   <!-- Start Filters Section -->
   <div class="site-section">
@@ -53,15 +43,14 @@
       <div class="row">
         {% for product in products %}
           <div class="col-sm-6 col-lg-4 text-center item mb-4">
-            <span class="tag">فروش ویژه</span>
             <a href="{{product.get_absolute_url}}"><img style="height: 220px; width: 220px;" src="{{ product.image.url }}" alt="Image" /></a>
             <h3 class="text-dark"><a href="shop-single.html">{{ product.title }}</a></h3>
             {% if product.discount %}
               <p class="price">
-                <del>{{ product.price }} هزار تومان</del>&mdash; {{ product.discount }}هزار تومان
+                <del>{{ product.price }}{% trans "$" %}</del>&mdash; {{ product.discount }}{% trans "$" %}
               </p>
             {% else %}
-              <p class="price">{{ product.price }}هزار تومان</p>
+              <p class="price">{{ product.price }}{% trans "$" %}</p>
             {% endif %}
             
           </div>
@@ -71,27 +60,27 @@
         <div class="col-md-12 text-center">
           <div class="site-block-27">
             <ul>
+              {% if products.has_previous %}
+                <li>
+                  <a href="?page={{products.previous_page_number}}">&lt;</a>
+                </li>
+              {% endif %}
+              {% for i in products.paginator.page_range  %}
+                {% if products.number == i %}
+                  <li class="active">
+                    <a href="">{{i}}</a>
+                  </li>
+                  {% else %}
+                  <li>
+                    <a href="?page={{ i }}">{{i}}</a>
+                  </li>
+                {% endif %}
+              {% endfor %}
+              {% if products.has_next %}
               <li>
-                <a href="#">&lt;</a>
+                <a href="?page={{products.next_page_number}}">&gt;</a>
               </li>
-              <li class="active">
-                <span>1</span>
-              </li>
-              <li>
-                <a href="#">2</a>
-              </li>
-              <li>
-                <a href="#">3</a>
-              </li>
-              <li>
-                <a href="#">4</a>
-              </li>
-              <li>
-                <a href="#">5</a>
-              </li>
-              <li>
-                <a href="#">&gt;</a>
-              </li>
+              {% endif %}
             </ul>
           </div>
         </div>

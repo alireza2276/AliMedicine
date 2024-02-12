@@ -2,7 +2,7 @@ from typing import Any
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView
 from .models import Product, Category
-
+from django.core.paginator import Paginator
 
 
 class ProductListView(ListView):
@@ -29,7 +29,11 @@ class ProductListView(ListView):
         if min_price and max_price:
             products = products.filter(price__lte=max_price, price__gte=min_price)
 
-        context['products'] = products
+        page_number = self.request.GET.get('page')
+        paginator = Paginator(products, 6)
+        page_obj = paginator.get_page(page_number)
+        context['products'] = page_obj
+
         context['catgeories'] = categories
         context['categories_obj'] = categories_obj
         return context
