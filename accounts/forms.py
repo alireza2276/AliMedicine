@@ -1,13 +1,14 @@
 from django import forms
 
 from allauth.account.forms import SignupForm, LoginForm
+from django.utils.translation import gettext_lazy as _
 
 
 
 class CustomSignupForm(SignupForm):
-    first_name = forms.CharField(max_length=30, label='Fist Name')
-    last_name = forms.CharField(max_length=30, label='Last Name')
-    phone_number = forms.IntegerField(label='Phone Number', required=False)
+    first_name = forms.CharField(max_length=30, label=_('first name'))
+    last_name = forms.CharField(max_length=30, label=_('last name'))
+    phone_number = forms.IntegerField(label=_('phone number'), required=False)
 
     def signup(self, request, user):
         user.first_name = self.cleaned_data['first_name']

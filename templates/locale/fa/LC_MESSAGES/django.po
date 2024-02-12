@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-06 21:10+0330\n"
+"POT-Creation-Date: 2024-02-12 21:37+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,116 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: .\_base.html:55
+msgid "home"
+msgstr "صفحه اصلی"
+
+#: .\_base.html:58
+msgid "all products"
+msgstr "همه محصولات"
+
+#: .\_base.html:61
+msgid "menu products"
+msgstr "منو محصولات"
+
+#: .\_base.html:100 .\_base.html:161
+msgid "about us"
+msgstr "درباره ما"
+
+#: .\_base.html:103
+msgid "contact us"
+msgstr "ارتباط با ما"
+
+#: .\_base.html:116 .\account\logout.html:8 .\account\logout.html:25
+msgid "Logout"
+msgstr "خروج"
+
+#: .\_base.html:117 .\account\password_change.html:8
+msgid "Password change"
+msgstr "تغییر رمز عبور"
+
+#: .\_base.html:122
+
+msgid "Account"
+msgstr "حساب کاربری"
+
+#: .\_base.html:125 .\account\login.html:8 .\account\login.html:32
+#: .\account\login.html:47 .\account\signup.html:46
+msgid "Login"
+msgstr "ورود"
+
+#: .\_base.html:126 .\account\signup.html:32 .\account\signup.html:42
+msgid "Sign up"
+msgstr "ثبت نام"
+
+#: .\_base.html:162
+msgid "In Ali pharmacy there are best drugs and products for you."
+msgstr "در داروخانه علی بهترین دارو ها برای شما میباشد"
+
+#: .\_base.html:168
+msgid "website informations"
+msgstr "اطلاعات تماس"
+
+#: .\account\login.html:51
+msgid "Have you not created an account yet?"
+msgstr "آیا تا الان حساب کاربری ایجاد نکرده اید؟"
+
+#: .\account\login.html:51
+msgid "Sign Up"
+msgstr "ثبت نام"
+
+#: .\account\logout.html:36
+msgid "Are you sure to log out of this page?"
+msgstr "آیا شما مطمئن هستید که میخواهید خارج شوید؟"
+
+#: .\account\logout.html:43
+msgid "Yes I`m Sure"
+msgstr "بله من مطمئن هستم"
+
+#: .\account\logout.html:47
+msgid "No back please"
+msgstr "خیر.برگرد"
+
+#: .\account\password_change.html:31
+msgid "password change"
+msgstr "تغییر رمز عبور"
+
+#: .\account\password_change.html:46
+msgid "Change"
+msgstr "تغییر"
+
+#: .\account\password_reset.html:8 .\account\password_reset_done.html:8
+#: .\account\password_reset_from_key.html:8
+#: .\account\password_reset_from_key_done.html:8
+msgid "Password reset"
+msgstr "بازیابی رمز عبور"
+
+#: .\account\password_reset.html:31 .\account\password_reset_from_key.html:31
+msgid "password reset"
+msgstr "بازیابی رمز عبور"
+
+#: .\account\password_reset.html:46 .\account\password_reset_from_key.html:46
+msgid "send"
+msgstr "ارسال"
+
+#: .\account\password_reset_done.html:31
+msgid ""
+"We have sent the link to your email.Please go to your email and submit the "
+"link."
+msgstr "ما برای ایمیل شما بک لینک ارسال کردیم. لطفا وارد ایمیل خود شده و لینک را تایید کنید."
+
+#: .\account\password_reset_from_key_done.html:31
+msgid "Your password has been changed successfully."
+msgstr "رمز عبور شما با موفقیت تغییر کرد"
+
+#: .\account\signup.html:8
+msgid "Signup"
+msgstr "ثبت نام"
+
+#: .\account\signup.html:46
+msgid "Have you create an account?"
+msgstr "آیا ثبت نام کرده اید؟"
 
 #: .\cart_detail.html:6
 msgid "cart"
@@ -50,14 +160,35 @@ msgstr "حذف"
 msgid "Home"
 msgstr "خانه"
 
-#: .\home.html:34
+#: .\home.html:17
+msgid "New drugs every day"
+msgstr "دارو های جدید همه روزه"
 
+#: .\home.html:18
+msgid "Welcome to Ali Pharmacy"
+msgstr "به داروخانه علی خوش آمدید"
+
+#: .\home.html:20
+msgid "see products"
+msgstr "مشاهده محصولات"
+
+#: .\home.html:34
+msgid "fantastic products"
+msgstr "محصولات با تخفیفات شگفت انگیز"
+
+#: .\home.html:50 .\home.html:51 .\home.html:57 .\home.html:90 .\home.html:91
+#: .\home.html:95 .\product_detail.html:144 .\product_detail.html:145
+#: .\product_detail.html:149 .\product_list.html:50 .\product_list.html:53
+msgid "$"
+msgstr "تومان"
+
+#: .\home.html:53
+msgid "discount"
+msgstr "تخفیف"
+
+#: .\home.html:76
 msgid "latest products"
 msgstr " جدید ترین محصولات"
-
-#: .\home.html:47 .\home.html:50
-msgid "$"
-msgstr "دلار"
 
 #: .\order_create.html:6
 msgid "checkout"
@@ -115,28 +246,30 @@ msgstr "ترکیبات"
 msgid "special"
 msgstr "مخصوص"
 
+#: .\product_detail.html:133
+msgid "related products"
+msgstr "محصولات مشابه"
+
 #: .\product_list.html:6
 msgid "Products"
 msgstr "محصولات"
 
-#: .\product_list.html:28
+#: .\product_list.html:18
 msgid "filter by price"
 msgstr "فیلتر بر اساس قیمت"
 
-#: .\product_list.html:29
+#: .\product_list.html:19
 msgid "Min"
 msgstr "حداقل"
 
-#: .\product_list.html:31
+#: .\product_list.html:21
 msgid "Max"
 msgstr "حداکثر"
 
-#: .\product_list.html:36
-#, fuzzy
-#| msgid "filter by price"
+#: .\product_list.html:26
 msgid "filter by category"
-msgstr "فیلتر بر اساس قیمت"
+msgstr "فیلتر بر اساس طبقه بندی"
 
-#: .\product_list.html:49
+#: .\product_list.html:39
 msgid "Filter"
 msgstr "فیلتر"

@@ -1,12 +1,11 @@
-
-
 {% load static %}
 {% load crispy_forms_tags %}
+{% load i18n %}
 
 <!doctype html>
 <html lang="en">
   <head>
-  	<title>Login 05</title>
+  	<title>{% trans "Login" %}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -30,7 +29,7 @@
 						<div class="login-wrap p-4 p-md-5">
 			      	<div class="d-flex">
 			      		<div class="w-100">
-			      			<h3 class="mb-4">Sign In</h3>
+			      			<h3 class="mb-4">{% trans "Login" %}</h3>
 			      		</div>
 								<div class="w-100">
 									<p class="social-media d-flex justify-content-end">
@@ -45,11 +44,11 @@
                 {{form|crispy}}
 			      		
 		            <div class="form-group">
-		            	<button type="submit" class="form-control btn btn-primary rounded submit px-3">Sign In</button>
+		            	<button type="submit" class="form-control btn btn-primary rounded submit px-3">{% trans "Login" %}</button>
 		            </div>
 		            
 		          </form>
-		          <p class="text-center">Not a member? <a data-toggle="tab" href="#signup">Sign Up</a></p>
+		          <p class="text-center">{% trans "Have you not created an account yet?" %}<a data-toggle="tab" href="{% url "account_signup" %}">{% trans "Sign Up" %}</a></p>
 		        </div>
 		      </div>
 				</div>

@@ -45,20 +45,43 @@
           <div class="d-flex align-items-center justify-content-between">
             <div class="logo">
               <div class="site-logo">
-                <a href="index.html" class="js-logo-clone">قالب Pharma</a>
+                <a href="{% url "home" %}" class="js-logo-clone">ALiMedicine</a>
               </div>
             </div>
             <div class="main-nav d-none d-lg-block">
+              
               <nav class="site-navigation text-right text-md-center" role="navigation">
                 <ul class="site-menu js-clone-nav d-none d-lg-block">
+                  <li class="has-children">
+                    {% if request.user.is_authenticated %}
+                    <a style="color: blue;" href="#">{{user.username}}</a>
+                    <ul class="dropdown">
+                      
+                     
+                      <li><a href="{% url "account_logout" %}">{% trans "Logout" %}</a></li>
+                      <li><a href="{% url "account_change_password" %}">{% trans "Password change" %}</a></li>
+  
+                    </ul>
+
+                    {% else %}
+                    <a style="color: crimson;" href="#">{% trans "Account" %}</a>
+                    <ul class="dropdown">
+                      
+                     
+                      <li><a href="#">{% trans "Sign up" %}</a></li>
+                      <li><a href="#">{% trans "Login" %}</a></li>
+  
+                    </ul>
+                    {% endif %}
+                  </li>
                   <li class="active">
-                    <a href="{% url "home" %}">صفحه نخست</a>
+                    <a href="{% url "home" %}">{% trans "home" %}</a>
                   </li>
                   <li>
-                    <a href="{% url "product_list" %}">محصولات</a>
+                    <a href="{% url "product_list" %}">{% trans "all products" %}</a>
                   </li>
                   <li class="has-children">
-                    <a href="#">منوی کشویی</a>
+                    <a href="#">{% trans "menu products" %}</a>
 
                     <ul class="dropdown">
                       {% for cat in category %}
@@ -97,14 +120,19 @@
                     </ul>
                   </li>
                   <li>
-                    <a href="about.html">درباره ما</a>
+                    <a href="about.html">{% trans "about us" %}</a>
                   </li>
                   <li>
-                    <a href="contact.html">تماس با ما</a>
+                    <a href="contact.html">{% trans "contact us" %}</a>
                   </li>
+                  
                 </ul>
+                
               </nav>
+              
             </div>
+            
+         
             <div class="icons">
               <a href="#" class="icons-btn d-inline-block js-search-open"><span class="icon-search"></span></a>
               <a href="{% url "cart_detail" %}" class="icons-btn d-inline-block bag">
@@ -113,9 +141,11 @@
               </a>
               <a href="#" class="site-menu-toggle js-menu-toggle ml-3 d-inline-block d-lg-none"><span class="icon-menu"></span></a>
             </div>
+            
           </div>
         </div>
         <!-- End Navbar Section -->
+        
       </div>
 
       {% if messages %}
@@ -136,30 +166,14 @@
           <div class="row">
             <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
               <div class="block-7">
-                <h3 class="footer-heading mb-4">درباره ما</h3>
-                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</p>
+                <h3 class="footer-heading mb-4">{% trans "about us" %}</h3>
+                <p>{% trans "In Ali pharmacy there are best drugs and products for you." %}</p>
               </div>
             </div>
-            <div class="col-lg-3 mx-auto mb-5 mb-lg-0">
-              <h3 class="footer-heading mb-4">دسترسی سریع</h3>
-              <ul class="list-unstyled">
-                <li>
-                  <a href="#">دارو ها</a>
-                </li>
-                <li>
-                  <a href="#">ویتامین ها</a>
-                </li>
-                <li>
-                  <a href="#">لوازم ارایشی</a>
-                </li>
-                <li>
-                  <a href="#">لوازم بهداشتی</a>
-                </li>
-              </ul>
-            </div>
+           
             <div class="col-md-6 col-lg-3">
               <div class="block-5 mb-5">
-                <h3 class="footer-heading mb-4">اطلاعات تماس</h3>
+                <h3 class="footer-heading mb-4">{% trans "website informations" %}</h3>
                 <ul class="list-unstyled">
                   <li class="address">شیراز خیابان جام جم</li>
                   <li class="phone">

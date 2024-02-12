@@ -130,20 +130,24 @@
     <div class="container">
       <div class="row">
         <div class="title-section text-center col-12">
-          <h2 class="text-uppercase">{% trans "related products" %}</h2>
+          <h2 class="text-uppercase">{% trans 'related products' %}</h2>
         </div>
       </div>
       <div class="row">
         {% for product in related_products %}
           <div class="col-sm-6 col-lg-4 text-center item mb-4">
-            <a href="shop-single.html"><img style="height: 200px; width: 200px;" src="{{product.image.url}}" alt="Image" /></a>
-            <h3 class="text-dark"><a href="shop-single.html">{{product.title}}</a></h3>
+            <a href="shop-single.html"><img style="height: 200px; width: 200px;" src="{{ product.image.url }}" alt="Image" /></a>
+            <h3 class="text-dark"><a href="shop-single.html">{{ product.title }}</a></h3>
             {% if product.discount %}
               <p class="price">
-                <del>{{ product.price }}{% trans "$" %}</del>&mdash; {{ product.discount }}{% trans "$" %}
+                <del>
+                  {{ product.price }}{% trans '$' %}
+                </del>&mdash; {{ product.discount }}{% trans '$' %}
               </p>
             {% else %}
-              <p class="price">{{ product.price }}{% trans "$" %}</p>
+              <p class="price">
+                {{ product.price }}{% trans '$' %}
+              </p>
             {% endif %}
           </div>
         {% endfor %}
