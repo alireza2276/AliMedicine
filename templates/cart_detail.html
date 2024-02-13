@@ -1,6 +1,11 @@
 {% extends '_base.html' %}
 {% load static %}
 {% load i18n %}
+{% load persian_template_tags %}
+{% load humanize %}
+
+
+
 
 {% block title %}
   {% trans 'cart' %}
@@ -12,8 +17,8 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12 mb-0">
-          <a href="index.html">صفحه نخست</a> <span class="mx-2 mb-0">/</span>
-          <strong class="text-black">سبد خرید</strong>
+          <a href="index.html">{% trans "home" %}</a> <span class="mx-2 mb-0">/</span>
+          <strong class="text-black">{% trans "cart" %}</strong>
         </div>
       </div>
     </div>
@@ -59,9 +64,9 @@
                       <h2 class="h5 text-black">{{ item.product_obj.title }}</h2>
                     </td>
                     {% if item.product_obj.discount %}
-                      <td>{{ item.product_obj.discount }} هزار تومان</td>
+                      <td>{{ item.product_obj.discount|intcomma:False|translate_number }}{% trans "$" %}</td>
                     {% else %}
-                      <td>{{ item.product_obj.price }} هزار تومان</td>
+                      <td>{{ item.product_obj.price|intcomma:False|translate_number }}{% trans "$" %}</td>
                     {% endif %}
                     <td>
                       <form class="d-flex" action="{% url 'cart_add' item.product_obj.id %}" method="POST">
@@ -73,7 +78,7 @@
                         <button class="small" type="submit"><i>refresh</i></button>
                       </form>
                     </td>
-                    <td>{{ item.total_price }} هزار تومان</td>
+                    <td>{{ item.total_price }}{% trans "$" %}</td>
                     <td>
                       <a href="{% url 'cart_remove' item.product_obj.id %}" class="btn btn-primary height-auto btn-sm">X</a>
                     </td>
@@ -89,22 +94,22 @@
         <div class="col-md-6">
           <div class="row mb-5">
             <div class="col-md-6">
-              <a href="{% url 'order_create' %}" class="btn btn-outline-primary btn-md btn-block">ادامه خرید</a>
+              <a href="{% url 'order_create' %}" class="btn btn-outline-primary btn-md btn-block">{% trans "continue shopping" %}</a>
             </div>
           </div>
           <div class="row">
             <div class="col-md-12">
-              <label class="text-black h4" for="coupon">تخفیف</label>
-              <p>لطفا کد تخفیف خود را وارد نمایید.</p>
+              <label class="text-black h4" for="coupon">{% trans "discount" %}</label>
+              <p>{% trans "If you have coupons please insert in the below" %}</p>
             </div>
             <form action="{% url "apply" %}" method="post">
               {% csrf_token %}
               <div class="col-md-8 mb-3 mb-md-0">
-                <input name="code" type="text" class="form-control py-3" id="coupon" placeholder="کد تخفیف" />
+                <input name="code" type="text" class="form-control py-3" id="coupon" placeholder="{% trans "coupons code" %}" />
               </div>
               <br>
               <div class="col-md-4">
-                <input type="submit" class="btn btn-primary btn-md" value="اعمال تخفیف"/>
+                <input type="submit" class="btn btn-primary btn-md" value="{% trans "make disocunt" %}"/>
               </div>
             </form>
             
@@ -115,13 +120,13 @@
             <div class="col-md-7">
               <div class="row">
                 <div class="col-md-12 text-right border-bottom mb-5">
-                  <h3 class="text-black h4 text-uppercase">جمع فاکتور</h3>
+                  <h3 class="text-black h4 text-uppercase">{% trans "total" %}</h3>
                 </div>
               </div>
               {% if cart.coupon %}
                 <div class="row mb-3">
                   <div class="col-md-6">
-                    <span class="text-black">جمع مبلغ:</span>
+                    <span class="text-black">{% trans "total price" %}</span>
                   </div>
                   <div class="col-md-6 text-right">
                     <strong class="text-black">{{ cart.get_total_price }} هزار تومان</strong>
@@ -129,26 +134,26 @@
                 </div>
                 <div class="row mb-3">
                   <div class="col-md-6">
-                    <span class="text-black">جمع مبلغ با کد تخفیف</span>
+                    <span class="text-black">{% trans "total price with coupons code" %}</span>
                   </div>
                   <div class="col-md-6 text-right">
-                    <strong class="text-black">{{ cart.get_total_price_after_discount }} هزار تومان</strong>
+                    <strong class="text-black">{{ cart.get_total_price_after_discount }}{% trans "$" %}</strong>
                   </div>
                 </div>
               {% else %}
                 <div class="row mb-3">
                   <div class="col-md-6">
-                    <span class="text-black">جمع مبلغ:</span>
+                    <span class="text-black">{% trans "total price" %}</span>
                   </div>
                   <div class="col-md-6 text-right">
-                    <strong class="text-black">{{ cart.get_total_price }} هزار تومان</strong>
+                    <strong class="text-black">{{ cart.get_total_price }}{% trans "$" %}</strong>
                   </div>
                 </div>
               {% endif %}
 
               <div class="row">
                 <div class="col-md-12">
-                  <a href="{% url "order_create" %}" class="btn btn-primary btn-lg btn-block">پرداخت و تکمیل خرید</a>
+                  <a href="{% url "order_create" %}" class="btn btn-primary btn-lg btn-block">{% trans "complete shpping" %}</a>
                 </div>
               </div>
             </div>

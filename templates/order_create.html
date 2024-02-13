@@ -1,6 +1,11 @@
 {% extends '_base.html' %}
 {% load static %}
 {% load i18n %}
+{% load persian_template_tags %}
+{% load humanize %}
+
+
+
 
 {% block title %}
   {% trans 'checkout' %}
@@ -12,8 +17,8 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12 mb-0">
-          <a href="index.html">صفحه نخست</a> <span class="mx-2 mb-0">/</span>
-          <strong class="text-black">پیش فاکتور</strong>
+          <a href="{% url "home" %}">{% trans "home" %}</a> <span class="mx-2 mb-0">/</span>
+          <strong class="text-black">{% trans "Purchase invoice" %}</strong>
         </div>
       </div>
     </div>
@@ -27,63 +32,63 @@
         <div class="col-md-12">
           <div class="bg-light rounded p-3">
             <p class="mb-0">
-              هنوز ثبت نام نکرده اید؟ <a href="#" class="d-inline-block">همین حالا عضو شوید</a>
+              {% trans "have you not account yet?" %}<a href="{% url "account_signup" %}" class="d-inline-block">{% trans "Sign up now" %}</a>
             </p>
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col-md-6 mb-5 mb-md-0">
-          <h2 class="h3 mb-3 text-black">جزئیات فاکتور</h2>
+          <h2 class="h3 mb-3 text-black">{% trans "details invoice" %}</h2>
           <div class="p-3 p-lg-5 border">
             <form action="" method="POST">
               {% csrf_token %}
 
               <div class="form-group row">
                 <div class="col-md-6">
-                  <label for="c_fname" class="text-black">نام شما <span class="text-danger">*</span></label>
+                  <label for="c_fname" class="text-black">{% trans "first name" %}<span class="text-danger">*</span></label>
                   <input type="text" class="form-control" id="c_fname" name="first_name" />
                 </div>
                 <div class="col-md-6">
-                  <label for="c_lname" class="text-black">نام خانوادگی <span class="text-danger">*</span></label>
+                  <label for="c_lname" class="text-black">{% trans "last name" %}<span class="text-danger">*</span></label>
                   <input type="text" class="form-control" id="c_lname" name="last_name" />
                 </div>
               </div>
 
               <div class="form-group row">
                 <div class="col-md-12">
-                  <label for="c_companyname" class="text-black">نام شهر</label>
+                  <label for="c_companyname" class="text-black">{% trans "city" %}</label>
                   <input type="text" class="form-control" id="c_companyname" name="city" />
                 </div>
               </div>
 
               <div class="form-group row">
                 <div class="col-md-12">
-                  <label for="c_address" class="text-black">آدرس <span class="text-danger">*</span></label>
+                  <label for="c_address" class="text-black">{% trans "address" %}<span class="text-danger">*</span></label>
                   <input type="text" class="form-control" id="c_address" name="address" placeholder="" />
                 </div>
               </div>
 
               <div class="form-group row">
                 <div class="col-md-6">
-                  <label for="c_postal_zip" class="text-black">کد پستی <span class="text-danger">*</span></label>
+                  <label for="c_postal_zip" class="text-black">{% trans "zip code" %}<span class="text-danger">*</span></label>
                   <input type="text" class="form-control" id="c_postal_zip" name="zip_code" />
                 </div>
               </div>
 
               <div class="form-group row mb-5">
                 <div class="col-md-6">
-                  <label for="c_email_address" class="text-black">آدرس ایمیل <span class="text-danger">*</span></label>
+                  <label for="c_email_address" class="text-black">{% trans "email" %}<span class="text-danger">*</span></label>
                   <input type="email" class="form-control" id="c_email_address" name="email" />
                 </div>
                 <div class="col-md-6">
-                  <label for="c_phone" class="text-black">تلفن تماس <span class="text-danger">*</span></label>
+                  <label for="c_phone" class="text-black">{% trans "phone number" %}<span class="text-danger">*</span></label>
                   <input type="text" class="form-control" id="c_phone" name="phone_Number" placeholder="شماره همراه" />
                 </div>
               </div>
 
               <div class="form-group">
-                <label for="c_order_notes" class="text-black">توضیحات خرید</label>
+                <label for="c_order_notes" class="text-black">{% trans "body shop" %}</label>
                 <input name="order_notes" id="c_order_notes" cols="30" rows="5" class="form-control" placeholder="توضیحات خود را تایپ کنید..."></textarea>
               </div>
               <button class="btn" type="submit">{% trans 'Send' %}</button>
@@ -91,29 +96,16 @@
           </div>
         </div>
         <div class="col-md-6">
-          <div class="row mb-5">
-            <div class="col-md-12">
-              <h2 class="h3 mb-3 text-black">کد تخفیف</h2>
-              <div class="p-3 p-lg-5 border">
-                <label for="c_code" class="text-black mb-3">کد تخفیف خود را وارد کنید</label>
-                <div class="input-group w-75">
-                  <input type="text" class="form-control" id="c_code" placeholder="Coupon Code" aria-label="کد تخفیف" aria-describedby="button-addon2" />
-                  <div class="input-group-append">
-                    <button class="btn btn-primary btn-sm px-4" type="button" id="button-addon2">اعمال تخفیف</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          
 
           <div class="row mb-5">
             <div class="col-md-12">
-              <h2 class="h3 mb-3 text-black">سفارش شما</h2>
+              <h2 class="h3 mb-3 text-black">{% trans "Your order" %}</h2>
               <div class="p-3 p-lg-5 border">
                 <table class="table site-block-order-table mb-5">
                   <thead>
-                    <th>محصول</th>
-                    <th>مجموع</th>
+                    <th>{% trans "product" %}</th>
+                    <th>{% trans "total" %}</th>
                   </thead>
                   <tbody>
                     {% for item in cart %}
@@ -122,18 +114,18 @@
                           {{ item.product_obj.title }} <strong class="mx-2">x</strong> {{ item.quantity }}
                         </td>
                         {% if item.product_obj.discount %}
-                          <td>{{ item.product_obj.discount }} هزار تومان</td>
+                          <td>{{ item.product_obj.discount|intcomma:False|translate_number }}{% trans "$" %}</td>
                         {% else %}
-                          <td>{{ item.product_obj.price }} هزار تومان</td>
+                          <td>{{ item.product_obj.price|intcomma:False|translate_number }}{% trans "$" %}</td>
                         {% endif %}
                       </tr>
                     {% endfor %}
                     <tr>
                       <td class="text-black font-weight-bold">
-                        <strong>جمع فاکتور</strong>
+                        <strong>{% trans "total invoice" %}</strong>
                       </td>
                       <td class="text-black font-weight-bold">
-                        <strong>{{ cart.get_total_price }} هزار تومان</strong>
+                        <strong>{{ cart.get_total_price|intcomma:False|translate_number }}{% trans "$" %}</strong>
                       </td>
                     </tr>
                   </tbody>
@@ -141,7 +133,7 @@
                 <form action="" method="post">
                   {% csrf_token %}
                   <div class="form-group">
-                    <button type="submit" class="btn btn-primary btn-lg btn-block">پرداخت فاکتور</button>
+                    <button type="submit" class="btn btn-primary btn-lg btn-block">{% trans "payment" %}</button>
                   </div>
                 </form>
               </div>

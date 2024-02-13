@@ -1,6 +1,7 @@
 from .models import Category
 from django.shortcuts import get_object_or_404
 from cart.cart import Cart
+from core.models import Information
 
 
 def cart(request):
@@ -13,3 +14,7 @@ def show_category(request, parent_id=None):
 
     return { 'category': category}
 
+
+def show_information(request):
+    information = Information.objects.all().last()
+    return {'information': information}

@@ -1,6 +1,10 @@
 {% extends '_base.html' %}
 {% load static %}
 {% load i18n %}
+{% load persian_template_tags %}
+{% load humanize %}
+
+
 
 {% block title %}
   {% trans 'product detail' %}
@@ -12,7 +16,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12 mb-0">
-          <a href="index.html">صفحه نخست</a> <span class="mx-2 mb-0">/</span> <a href="shop.html">محصولات</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">داروی Ibuprofen Tablets, 200mg</strong>
+          <a href="{% url "home" %}">{% trans "home" %}</a> <span class="mx-2 mb-0">/</span> <a href="{% url "product_list" %}">{% trans "product" %}</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">{{product.title}}</strong>
         </div>
       </div>
     </div>
@@ -33,14 +37,14 @@
           <p>{{ product.short_description|safe }}</p>
           {% if product.discount %}
             <p class="price">
-              <del>{{ product.price }} هزار تومان</del>&mdash; {{ product.discount }}هزار تومان
+              <del>{{ product.price|intcomma:False|translate_number }}{% trans "$" %}</del>&mdash; {{ product.discount|intcomma:False|translate_number }}{% trans "$" %}
             </p>
           {% else %}
-            <p class="price">{{ product.price }}هزار تومان</p>
+            <p class="price">{{ product.price|intcomma:False|translate_number }}{% trans "$" %}</p>
           {% endif %}
 
-          <h6>{% trans 'expire' %}:<strong>{{ product.expire }}</strong></h6>
-          <h6>{% trans 'inventory' %}:<strong>{{ product.inventory }}</strong></h6>
+          <h6>{% trans 'expire' %}:<strong>{{ product.expire|translate_number }}</strong></h6>
+          <h6>{% trans 'inventory' %}:<strong>{{ product.inventory|translate_number }}</strong></h6>
           <div class="mb-5">
             <form action="{% url 'cart_add' product.id %}" method="post">
               {% csrf_token %}
@@ -88,7 +92,7 @@
                       <td>
                         {% trans 'number' %}
                       </td>
-                      <td class="bg-light">{{ product.number }}</td>
+                      <td class="bg-light">{{ product.number|translate_number }}</td>
                     </tr>
                     <tr>
                       <td>
@@ -141,12 +145,12 @@
             {% if product.discount %}
               <p class="price">
                 <del>
-                  {{ product.price }}{% trans '$' %}
-                </del>&mdash; {{ product.discount }}{% trans '$' %}
+                  {{ product.price|intcomma:False|translate_number }}{% trans '$' %}
+                </del>&mdash; {{ product.discount|intcomma:False|translate_number }}{% trans '$' %}
               </p>
             {% else %}
               <p class="price">
-                {{ product.price }}{% trans '$' %}
+                {{ product.price|intcomma:False|translate_number }}{% trans '$' %}
               </p>
             {% endif %}
           </div>

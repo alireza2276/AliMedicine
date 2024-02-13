@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-12 21:37+0330\n"
+"POT-Creation-Date: 2024-02-13 21:27+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,53 +18,53 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: .\_base.html:55
-msgid "home"
-msgstr "صفحه اصلی"
-
-#: .\_base.html:58
-msgid "all products"
-msgstr "همه محصولات"
-
-#: .\_base.html:61
-msgid "menu products"
-msgstr "منو محصولات"
-
-#: .\_base.html:100 .\_base.html:161
-msgid "about us"
-msgstr "درباره ما"
-
-#: .\_base.html:103
-msgid "contact us"
-msgstr "ارتباط با ما"
-
-#: .\_base.html:116 .\account\logout.html:8 .\account\logout.html:25
+#: .\_base.html:61 .\account\logout.html:8 .\account\logout.html:25
 msgid "Logout"
 msgstr "خروج"
 
-#: .\_base.html:117 .\account\password_change.html:8
+#: .\_base.html:62 .\account\password_change.html:8
 msgid "Password change"
 msgstr "تغییر رمز عبور"
 
-#: .\_base.html:122
-
+#: .\_base.html:67
 msgid "Account"
 msgstr "حساب کاربری"
 
-#: .\_base.html:125 .\account\login.html:8 .\account\login.html:32
+#: .\_base.html:71 .\account\signup.html:32 .\account\signup.html:42
+msgid "Sign up"
+msgstr "ثبت نام"
+
+#: .\_base.html:72 .\account\login.html:8 .\account\login.html:32
 #: .\account\login.html:47 .\account\signup.html:46
 msgid "Login"
 msgstr "ورود"
 
-#: .\_base.html:126 .\account\signup.html:32 .\account\signup.html:42
-msgid "Sign up"
-msgstr "ثبت نام"
+#: .\_base.html:78 .\cart_detail.html:20 .\contact.html:15
+#: .\order_create.html:20 .\product_detail.html:19
+msgid "home"
+msgstr "صفحه اصلی"
 
-#: .\_base.html:162
+#: .\_base.html:81
+msgid "all products"
+msgstr "همه محصولات"
+
+#: .\_base.html:84
+msgid "menu products"
+msgstr "منو محصولات"
+
+#: .\_base.html:124 .\contact.html:16
+msgid "contact us"
+msgstr "ارتباط با ما"
+
+#: .\_base.html:167
+msgid "about us"
+msgstr "درباره ما"
+
+#: .\_base.html:168
 msgid "In Ali pharmacy there are best drugs and products for you."
 msgstr "در داروخانه علی بهترین دارو ها برای شما میباشد"
 
-#: .\_base.html:168
+#: .\_base.html:174
 msgid "website informations"
 msgstr "اطلاعات تماس"
 
@@ -114,7 +114,9 @@ msgstr "ارسال"
 msgid ""
 "We have sent the link to your email.Please go to your email and submit the "
 "link."
-msgstr "ما برای ایمیل شما بک لینک ارسال کردیم. لطفا وارد ایمیل خود شده و لینک را تایید کنید."
+msgstr ""
+"ما برای ایمیل شما بک لینک ارسال کردیم. لطفا وارد ایمیل خود شده و لینک را "
+"تایید کنید."
 
 #: .\account\password_reset_from_key_done.html:31
 msgid "Your password has been changed successfully."
@@ -128,33 +130,111 @@ msgstr "ثبت نام"
 msgid "Have you create an account?"
 msgstr "آیا ثبت نام کرده اید؟"
 
-#: .\cart_detail.html:6
+#: .\cart_detail.html:11 .\cart_detail.html:21
 msgid "cart"
 msgstr "جزییات سبد خرید"
 
-#: .\cart_detail.html:33
+#: .\cart_detail.html:38
 msgid "image"
 msgstr "تصویر محصول"
 
-#: .\cart_detail.html:36
+#: .\cart_detail.html:41 .\order_create.html:107 .\product_detail.html:19
 msgid "product"
 msgstr "محصول"
 
-#: .\cart_detail.html:39
+#: .\cart_detail.html:44
 msgid "price"
 msgstr "قیمت"
 
-#: .\cart_detail.html:42
+#: .\cart_detail.html:47
 msgid "quantity"
 msgstr "تعداد"
 
-#: .\cart_detail.html:45
+#: .\cart_detail.html:50
 msgid "total_price"
 msgstr "مجموع"
 
-#: .\cart_detail.html:48
+#: .\cart_detail.html:53
 msgid "remove"
 msgstr "حذف"
+
+#: .\cart_detail.html:67 .\cart_detail.html:69 .\cart_detail.html:81
+#: .\cart_detail.html:140 .\cart_detail.html:149 .\home.html:50 .\home.html:51
+#: .\home.html:57 .\home.html:90 .\home.html:91 .\home.html:95
+#: .\order_create.html:117 .\order_create.html:119 .\order_create.html:128
+#: .\product_detail.html:40 .\product_detail.html:43 .\product_detail.html:148
+#: .\product_detail.html:149 .\product_detail.html:153 .\product_list.html:52
+#: .\product_list.html:55
+msgid "$"
+msgstr "تومان"
+
+#: .\cart_detail.html:97
+msgid "continue shopping"
+msgstr "ادامه خرید"
+
+#: .\cart_detail.html:102 .\home.html:53
+msgid "discount"
+msgstr "تخفیف"
+
+#: .\cart_detail.html:103
+msgid "If you have coupons please insert in the below"
+msgstr "اگر کد تخفیف دارید در زیر وارد کنید"
+
+#: .\cart_detail.html:108
+msgid "coupons code"
+msgstr "کد تخفیف"
+
+#: .\cart_detail.html:112
+msgid "make disocunt"
+msgstr "اعمال تخفیف"
+
+#: .\cart_detail.html:123 .\order_create.html:108
+msgid "total"
+msgstr "مجموع"
+
+#: .\cart_detail.html:129 .\cart_detail.html:146
+msgid "total price"
+msgstr "  مجموع قیمت"
+
+#: .\cart_detail.html:137
+msgid "total price with coupons code"
+msgstr "مجموع قیمت با کد تخفیف"
+
+#: .\cart_detail.html:156
+msgid "complete shpping"
+msgstr "پرداخت و تکمیل خرید"
+
+#: .\contact.html:6
+msgid "contact"
+msgstr "ارتباط با ما"
+
+#: .\contact.html:28
+msgid "send message"
+msgstr "ارسال پیام"
+
+#: .\contact.html:36 .\order_create.html:49
+msgid "first name"
+msgstr "نام"
+
+#: .\contact.html:40 .\order_create.html:53
+msgid "last name"
+msgstr "نام خانوادگی"
+
+#: .\contact.html:46 .\order_create.html:81
+msgid "email"
+msgstr "ایمیل"
+
+#: .\contact.html:52
+msgid "subject"
+msgstr "موضوع"
+
+#: .\contact.html:59
+msgid "body"
+msgstr "متن پیام"
+
+#: .\contact.html:65 .\order_create.html:94
+msgid "Send"
+msgstr "ارسال"
 
 #: .\home.html:7
 msgid "Home"
@@ -176,100 +256,140 @@ msgstr "مشاهده محصولات"
 msgid "fantastic products"
 msgstr "محصولات با تخفیفات شگفت انگیز"
 
-#: .\home.html:50 .\home.html:51 .\home.html:57 .\home.html:90 .\home.html:91
-#: .\home.html:95 .\product_detail.html:144 .\product_detail.html:145
-#: .\product_detail.html:149 .\product_list.html:50 .\product_list.html:53
-msgid "$"
-msgstr "تومان"
-
-#: .\home.html:53
-msgid "discount"
-msgstr "تخفیف"
-
 #: .\home.html:76
 msgid "latest products"
 msgstr " جدید ترین محصولات"
 
-#: .\order_create.html:6
+#: .\order_create.html:11
 msgid "checkout"
 msgstr "ثبت سفارش"
 
-#: .\order_create.html:89
-msgid "Send"
-msgstr "ارسال"
+#: .\order_create.html:21
+msgid "Purchase invoice"
+msgstr "پیش فاکتور خرید"
 
-#: .\product_detail.html:6 .\product_detail.html:61
+#: .\order_create.html:35
+
+msgid "have you not account yet?"
+msgstr "آیا تا الان حساب کاربری ایجاد نکرده اید؟"
+
+#: .\order_create.html:35
+
+msgid "Sign up now"
+msgstr "همین الان عضو شوید"
+
+#: .\order_create.html:42
+msgid "details invoice"
+msgstr "جزییات فاکتور"
+
+#: .\order_create.html:60
+msgid "city"
+msgstr "شهر"
+
+#: .\order_create.html:67
+msgid "address"
+msgstr "آدرس"
+
+#: .\order_create.html:74
+
+msgid "zip code"
+msgstr "کد پستی"
+
+#: .\order_create.html:85
+
+msgid "phone number"
+msgstr "شماره همراه"
+
+#: .\order_create.html:91
+
+msgid "body shop"
+msgstr "توضیحات خرید"
+
+#: .\order_create.html:103
+msgid "Your order"
+msgstr "سفارش شما"
+
+#: .\order_create.html:125
+
+msgid "total invoice"
+msgstr "مجموع فاکتور"
+
+#: .\order_create.html:136
+msgid "payment"
+msgstr "پرداخت"
+
+#: .\product_detail.html:10 .\product_detail.html:65
 msgid "product detail"
 msgstr "جزییات محصول"
 
-#: .\product_detail.html:42
+#: .\product_detail.html:46
 msgid "expire"
 msgstr "تاریخ انقضا"
 
-#: .\product_detail.html:43
+#: .\product_detail.html:47
 msgid "inventory"
 msgstr "موجود در انبار"
 
-#: .\product_detail.html:51
+#: .\product_detail.html:55
 msgid "Add to cart"
 msgstr "اضافه به سبد خرید"
 
-#: .\product_detail.html:58
+#: .\product_detail.html:62
 msgid "description"
 msgstr "توضیحات محصول"
 
-#: .\product_detail.html:77
+#: .\product_detail.html:81
 msgid "Country Created"
 msgstr "کشور سازنده"
 
-#: .\product_detail.html:83
+#: .\product_detail.html:87
 msgid "gender"
 msgstr "مناسب برای"
 
-#: .\product_detail.html:89
+#: .\product_detail.html:93
 msgid "number"
 msgstr "تعداد"
 
-#: .\product_detail.html:95
+#: .\product_detail.html:99
 msgid "volume"
 msgstr "حجم"
 
-#: .\product_detail.html:101
+#: .\product_detail.html:105
 msgid "length"
 msgstr "طول"
 
-#: .\product_detail.html:107
+#: .\product_detail.html:111
 msgid "compounds"
 msgstr "ترکیبات"
 
-#: .\product_detail.html:113
+#: .\product_detail.html:117
 msgid "special"
 msgstr "مخصوص"
 
-#: .\product_detail.html:133
+#: .\product_detail.html:137
 msgid "related products"
 msgstr "محصولات مشابه"
 
-#: .\product_list.html:6
+#: .\product_list.html:8
 msgid "Products"
 msgstr "محصولات"
 
-#: .\product_list.html:18
+#: .\product_list.html:20
 msgid "filter by price"
 msgstr "فیلتر بر اساس قیمت"
 
-#: .\product_list.html:19
+#: .\product_list.html:21
 msgid "Min"
 msgstr "حداقل"
 
-#: .\product_list.html:21
+#: .\product_list.html:23
 msgid "Max"
 msgstr "حداکثر"
 
-#: .\product_list.html:26
+#: .\product_list.html:28
 msgid "filter by category"
 msgstr "فیلتر بر اساس طبقه بندی"
 
-#: .\product_list.html:39
+#: .\product_list.html:41
 msgid "Filter"
 msgstr "فیلتر"

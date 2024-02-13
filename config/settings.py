@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'django.contrib.humanize',
+
     # third app
     "debug_toolbar",
     'allauth',
@@ -51,10 +53,12 @@ INSTALLED_APPS = [
 
     #local app
     'accounts',
+    'core',
     'store',
     'cart',
     'orders',
     'coupons',
+    'persian_translate',
 ]
 
 MIDDLEWARE = [
@@ -97,6 +101,7 @@ TEMPLATES = [
                 'store.context_processors.cart',
                 
                 'store.context_processors.show_category',
+                'store.context_processors.show_information'
             ],
         },
     },

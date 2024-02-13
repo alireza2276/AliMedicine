@@ -1,6 +1,8 @@
 {% extends '_base.html' %}
 {% load static %}
 {% load i18n %}
+{% load persian_template_tags %}
+{% load humanize %}
 
 {% block title %}
   {% trans 'Products' %}
@@ -47,10 +49,10 @@
             <h3 class="text-dark"><a href="shop-single.html">{{ product.title }}</a></h3>
             {% if product.discount %}
               <p class="price">
-                <del>{{ product.price }}{% trans "$" %}</del>&mdash; {{ product.discount }}{% trans "$" %}
+                <del>{{ product.price|intcomma:False|translate_number }}{% trans "$" %}</del>&mdash; {{ product.discount|intcomma:False|translate_number }}{% trans "$" %}
               </p>
             {% else %}
-              <p class="price">{{ product.price }}{% trans "$" %}</p>
+              <p class="price">{{ product.price|intcomma:False|translate_number }}{% trans "$" %}</p>
             {% endif %}
             
           </div>
@@ -68,11 +70,11 @@
               {% for i in products.paginator.page_range  %}
                 {% if products.number == i %}
                   <li class="active">
-                    <a href="">{{i}}</a>
+                    <a href="">{{i|translate_number}}</a>
                   </li>
                   {% else %}
                   <li>
-                    <a href="?page={{ i }}">{{i}}</a>
+                    <a href="?page={{ i }}">{{i|translate_number}}</a>
                   </li>
                 {% endif %}
               {% endfor %}

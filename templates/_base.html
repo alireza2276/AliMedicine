@@ -74,10 +74,10 @@
                     </ul>
                     {% endif %}
                   </li>
-                  <li class="active">
+                  <li class="{% if request.resolver_match.url_name == 'home' %}active{% endif %}">
                     <a href="{% url "home" %}">{% trans "home" %}</a>
                   </li>
-                  <li>
+                  <li class="{% if request.resolver_match.url_name == 'product_list' %}active{% endif %}">
                     <a href="{% url "product_list" %}">{% trans "all products" %}</a>
                   </li>
                   <li class="has-children">
@@ -119,11 +119,9 @@
                       {% endfor %}
                     </ul>
                   </li>
-                  <li>
-                    <a href="about.html">{% trans "about us" %}</a>
-                  </li>
-                  <li>
-                    <a href="contact.html">{% trans "contact us" %}</a>
+                 
+                  <li class="{% if request.resolver_match.url_name == 'contact' %}active{% endif %}">
+                    <a href="{% url "contact" %}">{% trans "contact us" %}</a>
                   </li>
                   
                 </ul>
@@ -134,7 +132,10 @@
             
          
             <div class="icons">
-              <a href="#" class="icons-btn d-inline-block js-search-open"><span class="icon-search"></span></a>
+              <form action="{% url "search" %}" method="get">
+                <input style="border-radius: 10px;" placeholder="{% trans "Search" %}"  name="q" type="text">
+              </form>
+              <br>
               <a href="{% url "cart_detail" %}" class="icons-btn d-inline-block bag">
                 <span class="icon-shopping-bag"></span>
                 <span class="number">{{cart|length}}</span>
@@ -175,11 +176,11 @@
               <div class="block-5 mb-5">
                 <h3 class="footer-heading mb-4">{% trans "website informations" %}</h3>
                 <ul class="list-unstyled">
-                  <li class="address">شیراز خیابان جام جم</li>
+                  <li class="address">{{information.address}}</li>
                   <li class="phone">
-                    <a href="tel://02112345678">02112345678</a>
+                    <a href="tel://02112345678">{{information.phone_number}}</a>
                   </li>
-                  <li class="email">email@website.com</li>
+                  <li class="email">{{information.email}}</li>
                 </ul>
               </div>
             </div>
@@ -193,7 +194,6 @@
                                 </script>All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" class="text-primary">Colorlib</a>
                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                 <br />
-                فارسی و راست چین شده با <i class="icon-heart" aria-hidden="true"></i> توسط <a href="http://webrubik.com" target="_blank" class="text-primary">Webrubik.com</a>
               </p>
             </div>
           </div>
